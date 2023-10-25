@@ -1,0 +1,27 @@
+modules:
+  jira:projectPage:
+    - key: sprint-supermaster-hello-world-project-page
+      function: main
+      title: Sprint SuperMaster
+  consumer:
+    - key: queue-consumer
+      queue: queue-name
+      resolver:
+        function: consumer-function
+        method: event-listener
+  function:
+    - key: main
+      handler: index.run
+    - key: consumer-function
+      handler: consumer.handler
+app:
+  id: ari:cloud:ecosystem::app/7d8c3319-cc3b-4d61-af30-13fa3d99b572
+permissions:
+  scopes:
+    - read:jira-user
+    - storage:app
+    - read:jira-work
+  external:
+    fetch:
+      backend:
+        - api.openai.com
